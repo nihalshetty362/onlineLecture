@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Panel</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-4">Admin Panel</h1>
+    
+    <h2 class="mt-4">Instructors</h2>
+    <ul class="list-group">
+        <li class="list-group-item" th:each="instructor : ${instructors}">
+            <span th:text="${instructor.name}"></span> - <span th:text="${instructor.email}"></span>
+        </li>
+    </ul>
+
+    <h2 class="mt-4">Add Course</h2>
+    <form th:action="@{/admin/courses}" method="post" class="form-group">
+        <input type="text" name="name" placeholder="Name" class="form-control mt-2">
+        <input type="text" name="level" placeholder="Level" class="form-control mt-2">
+        <input type="text" name="description" placeholder="Description" class="form-control mt-2">
+        <input type="text" name="image" placeholder="Image URL" class="form-control mt-2">
+        <button type="submit" class="btn btn-primary mt-2">Add Course</button>
+    </form>
+
+    <h2 class="mt-4">Add Lecture</h2>
+    <form th:action="@{/admin/courses/__courseId__/lectures}" method="post" class="form-group">
+        <input type="text" name="title" placeholder="Title" class="form-control mt-2">
+        <input type="number" name="instructorId" placeholder="Instructor ID" class="form-control mt-2">
+        <input type="date" name="date" placeholder="Date" class="form-control mt-2">
+        <input type="time" name="startTime" placeholder="Start Time" class="form-control mt-2">
+        <input type="time" name="endTime" placeholder="End Time" class="form-control mt-2">
+        <button type="submit" class="btn btn-primary mt-2">Add Lecture</button>
+    </form>
+</div>
+</body>
+</html>

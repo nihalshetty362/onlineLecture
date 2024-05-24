@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Instructor Panel</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1 class="mt-4">Instructor Panel</h1>
+    
+    <h2 class="mt-4">Assigned Lectures</h2>
+    <ul class="list-group">
+        <li class="list-group-item" th:each="lecture : ${lectures}">
+            <span th:text="${lecture.title}"></span> - <span th:text="${lecture.date}"></span> - <span th:text="${lecture.startTime}"></span> to <span th:text="${lecture.endTime}"></span>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
